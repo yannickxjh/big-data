@@ -1,7 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const database = require('./database')
+// Uncomment if mysql is working
+//const database = require('./database')
 
 app.set('views', __dirname);
 app.engine('html', require('ejs').renderFile);
@@ -31,7 +32,8 @@ app.post('/', (req, res) => {
 app.post('/db', (req, res) => {
     var fs = require('fs');
     var text = fs.readFileSync('names/' + req.body.file, 'utf8');
-    database.add(text, req.body.file);
+    // Uncomment if mysql is working
+    //database.add(text, req.body.file);
     res.status(200).send('ok');
 })
 
