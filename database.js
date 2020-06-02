@@ -23,9 +23,7 @@ function add(data, filename) {
                 sex: value[1],
                 number: Number(value[2]),
                 year: year }
-            ).then(res => {
-                console.log(res)
-            })
+            )
         }
     });
 }

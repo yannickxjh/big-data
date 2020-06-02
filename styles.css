@@ -1,1 +1,12 @@
 /* Global style */
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    text-align: center;
+    width: 50vw;
+}
