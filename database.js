@@ -14,7 +14,12 @@ function add(data, filename) {
     datas.forEach(element => {
         if (element) {
             value = element.split(',')
-            knex('ta table').insert([{name: value[0]}, {sex: value[1]}, { number: Number(value[2])}])
+            knex('ta table').insert([
+                {name: value[0]},
+                {sex: value[1]},
+                { number: Number(value[2])},
+                { year: year }
+            ])
         }
     });
 }
