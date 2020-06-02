@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Baby Data</title>
     <link href="styles.css" rel="stylesheet">
 </head>
+
 <body>
     <h1>Choose your baby name !</h1>
-    <div>
-        <input>
-    </div>
+    <form method="post" action="/">
+        <!-- <div>
+
+            <input type="text" name="name" required>
+        </div> -->
+        <div>
+            <span>Gender</span>
+            <select name="gender">
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+        </div>
+        <div>
+            <span>Year</span>
+            <input type="number" name="year">
+        </div>
+        <input type="submit" value="Submit">
+    </form>
 </body>
+
 </html>
