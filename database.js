@@ -10,7 +10,7 @@ const knex = require('knex')({
 
 knex.schema.hasTable('names').then(exists => {
     if (!exists) {
-      return knex.schema.createTable('names', async function(t) {
+      return knex.schema.createTable('names', function(t) {
         t.increments('id').primary();
         t.string('name');
         t.string('sex');
@@ -30,7 +30,7 @@ function add(data, filename) {
     datas.forEach(element => {
         if (element) {
             value = element.split(',')
-            return await knex('names').insert(
+            knex('names').insert(
                 { name: value[0],
                 sex: value[1],
                 number: Number(value[2]),
@@ -43,9 +43,9 @@ function add(data, filename) {
 }
 
 
-async function getNamesBySexYear(mSex, mYear) {
+function getNamesBySexYear(mSex, mYear) {
     console.log(mSex, mYear);
-    return await knex('names')
+    knex('names')
         .where({sex: mSex, year: mYear})
         .orderBy('number', 'desc')
         .limit(10)
@@ -54,9 +54,9 @@ async function getNamesBySexYear(mSex, mYear) {
         })
 }
 
-async function getNamesWithStartLetter(mSex, mYear, startLetter) {
+function getNamesWithStartLetter(mSex, mYear, startLetter) {
     console.log(startLetter, mSex, mYear);
-    return await knex('names')
+    knex('names')
         .where({sex: mSex, year: mYear})
         .where('name', 'like', `${startLetter}%`)
         .orderBy('number', 'desc')
@@ -66,9 +66,9 @@ async function getNamesWithStartLetter(mSex, mYear, startLetter) {
         })
 }
 
-async function getNamesWithEndLetter(mSex, mYear, endLetter) {
+function getNamesWithEndLetter(mSex, mYear, endLetter) {
     console.log(endLetter, mSex, mYear);
-    return await knex('names')
+    knex('names')
         .where({sex: mSex, year: mYear})
         .where('name', 'like', `%${endLetter}`)
         .orderBy('number', 'desc')
@@ -78,9 +78,9 @@ async function getNamesWithEndLetter(mSex, mYear, endLetter) {
         })
 }
 
-async function getNamesWithContainLetter(mSex, mYear, containLetter) {
+function getNamesWithContainLetter(mSex, mYear, containLetter) {
     console.log(containLetter, mSex, mYear);
-    return await knex('names')
+    knex('names')
         .where({sex: mSex, year: mYear})
         .where('name', 'like', `%${containLetter}%`)
         .orderBy('number', 'desc')
@@ -90,9 +90,9 @@ async function getNamesWithContainLetter(mSex, mYear, containLetter) {
         })
 }
 
-async function getNamesWithAllLetters(mSex, mYear, startLetter, endLetter, containLetter) {
+function getNamesWithAllLetters(mSex, mYear, startLetter, endLetter, containLetter) {
     console.log(endLetter, startLetter ,containLetter, mSex, mYear);
-    return await knex('names')
+    knex('names')
         .where({sex: mSex, year: mYear})
         .where('name', 'like', `${startLetter}%${containLetter}%${endLetter}`)
         .orderBy('number', 'desc')
@@ -102,9 +102,9 @@ async function getNamesWithAllLetters(mSex, mYear, startLetter, endLetter, conta
         })
 }
 
-async function getNamesWithStartEndLetters(mSex, mYear, startLetter, endLetter) {
+function getNamesWithStartEndLetters(mSex, mYear, startLetter, endLetter) {
     console.log(endLetter, startLetter, mSex, mYear);
-    return await knex('names')
+    knex('names')
         .where({sex: mSex, year: mYear})
         .where('name', 'like', `${startLetter}%${endLetter}`)
         .orderBy('number', 'desc')
@@ -114,9 +114,9 @@ async function getNamesWithStartEndLetters(mSex, mYear, startLetter, endLetter) 
         })
 }
 
-async function getNamesWithStartContainLetters(mSex, mYear, startLetter, containLetter) {
+function getNamesWithStartContainLetters(mSex, mYear, startLetter, containLetter) {
     console.log(containLetter, startLetter, mSex, mYear);
-    return await knex('names')
+    knex('names')
         .where({sex: mSex, year: mYear})
         .where('name', 'like', `${startLetter}%${containLetter}%`)
         .orderBy('number', 'desc')
@@ -126,9 +126,9 @@ async function getNamesWithStartContainLetters(mSex, mYear, startLetter, contain
         })
 }
 
-async function getNamesWithContainEndLetters(mSex, mYear, endLetter, containLetter) {
+function getNamesWithContainEndLetters(mSex, mYear, endLetter, containLetter) {
     console.log(containLetter, endLetter, mSex, mYear);
-    return await knex('names')
+    knex('names')
         .where({sex: mSex, year: mYear})
         .where('name', 'like', `%${containLetter}%${endLetter}`)
         .orderBy('number', 'desc')

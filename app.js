@@ -25,24 +25,24 @@ app.get('/', (req, res) => {
     
 })
 
-app.post('/', (req, res) => {
+app.post('/', async (req, res) => {
     let result;
     if (req.body.start == '' && req.body.end == '' && req.body.contain == '') {
-        result = database.getNamesBySexYear(req.body.gender, req.body.year);
+        result = await database.getNamesBySexYear(req.body.gender, req.body.year);
     } else if (req.body.start != '' && req.body.end == '' && req.body.contain == '') {
-        result = database.getNamesWithStartLetter(req.body.gender, req.body.year, req.body.start)
+        result = await database.getNamesWithStartLetter(req.body.gender, req.body.year, req.body.start)
     } else if (req.body.end != '' && req.body.start == '' && req.body.contain == '') {
-        result = database.getNamesWithEndLetter(req.body.gender, req.body.year, req.body.end)
+        result = await database.getNamesWithEndLetter(req.body.gender, req.body.year, req.body.end)
     } else if (req.body.contain != '' && req.body.start == '' && req.body.end == '') {
-        result = database.getNamesWithContainLetter(req.body.gender, req.body.year, req.body.contain)
+        result = await database.getNamesWithContainLetter(req.body.gender, req.body.year, req.body.contain)
     } else if (req.body.contain != '' && req.body.start != '' && req.body.end != '') {
-        result = database.getNamesWithAllLetters(req.body.gender, req.body.year, req.body.start, req.body.end, req.body.contain)
+        result = await database.getNamesWithAllLetters(req.body.gender, req.body.year, req.body.start, req.body.end, req.body.contain)
     } else if (req.body.contain == '' && req.body.start != '' && req.body.end != '') {
-        result = database.getNamesWithStartEndLetters(req.body.gender, req.body.year, req.body.start, req.body.end)
+        result = await database.getNamesWithStartEndLetters(req.body.gender, req.body.year, req.body.start, req.body.end)
     } else if (req.body.contain != '' && req.body.start != '' && req.body.end == '') {
-        result = database.getNamesWithStartContainLetters(req.body.gender, req.body.year, req.body.start, req.body.contain)
+        result = await database.getNamesWithStartContainLetters(req.body.gender, req.body.year, req.body.start, req.body.contain)
     } else if (req.body.contain != '' && req.body.start == '' && req.body.end != '') {
-        result = database.getNamesWithContainEndLetters(req.body.gender, req.body.year, req.body.end, req.body.contain)
+        result = await database.getNamesWithContainEndLetters(req.body.gender, req.body.year, req.body.end, req.body.contain)
     }
     res.status(200).render('name.html', { data: result})
 })
