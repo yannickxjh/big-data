@@ -24,10 +24,6 @@ app.get('/', (req, res) => {
     res.render('index.html')
 })
 
-// app.get('/name', (req, res) => {
-//     console.log(req.data)
-// })
-
 app.post('/', async (req, res) => {
     let result;
     if (req.body.start == '' && req.body.end == '' && req.body.contain == '') {
