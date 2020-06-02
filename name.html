@@ -1,7 +1,13 @@
-<div>
+<div class="row">
     <% for(var i = 0 ; i < data.length ; i++) { %>
-    <tr>
-        <td><%= data[i].name %></td>
-    </tr>
+        <% if (data[i].sex === 'M') { %>
+        <p style="color: blue">
+            <%= data[i].name %>
+        </p>
+        <% else %>
+        <p style="color: pink">
+            <%= data[i].name %>
+        </p>
+        <% } %>
     <% } %>
 </div>
