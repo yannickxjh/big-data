@@ -22,8 +22,11 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.render('index.html')
-    
 })
+
+// app.get('/name', (req, res) => {
+//     console.log(req.data)
+// })
 
 app.post('/', async (req, res) => {
     let result;
@@ -44,7 +47,7 @@ app.post('/', async (req, res) => {
     } else if (req.body.contain != '' && req.body.start == '' && req.body.end != '') {
         result = await database.getNamesWithContainEndLetters(req.body.gender, req.body.year, req.body.end, req.body.contain)
     }
-    res.status(200).render('name.html', { data: result})
+    res.status(200).render('name.html', { data: result })
 })
 
 app.post('/db', (req, res) => {
