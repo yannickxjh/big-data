@@ -45,97 +45,73 @@ function add(data, filename) {
 
 function getNamesBySexYear(mSex, mYear) {
     console.log(mSex, mYear);
-    knex('names')
+    return knex('names')
         .where({sex: mSex, year: mYear})
         .orderBy('number', 'desc')
         .limit(10)
-        .then(getAll => {
-            console.log(getAll)
-        })
 }
 
 function getNamesWithStartLetter(mSex, mYear, startLetter) {
     console.log(startLetter, mSex, mYear);
-    knex('names')
+    return knex('names')
         .where({sex: mSex, year: mYear})
         .where('name', 'like', `${startLetter}%`)
         .orderBy('number', 'desc')
         .limit(10)
-        .then(getAll => {
-            console.log(getAll)
-        })
 }
 
 function getNamesWithEndLetter(mSex, mYear, endLetter) {
     console.log(endLetter, mSex, mYear);
-    knex('names')
+    return knex('names')
         .where({sex: mSex, year: mYear})
         .where('name', 'like', `%${endLetter}`)
         .orderBy('number', 'desc')
         .limit(10)
-        .then(getAll => {
-            console.log(getAll)
-        })
 }
 
 function getNamesWithContainLetter(mSex, mYear, containLetter) {
     console.log(containLetter, mSex, mYear);
-    knex('names')
+    return knex('names')
         .where({sex: mSex, year: mYear})
         .where('name', 'like', `%${containLetter}%`)
         .orderBy('number', 'desc')
         .limit(10)
-        .then(getAll => {
-            console.log(getAll)
-        })
 }
 
 function getNamesWithAllLetters(mSex, mYear, startLetter, endLetter, containLetter) {
     console.log(endLetter, startLetter ,containLetter, mSex, mYear);
-    knex('names')
+    return knex('names')
         .where({sex: mSex, year: mYear})
         .where('name', 'like', `${startLetter}%${containLetter}%${endLetter}`)
         .orderBy('number', 'desc')
         .limit(10)
-        .then(getAll => {
-            console.log(getAll)
-        })
 }
 
 function getNamesWithStartEndLetters(mSex, mYear, startLetter, endLetter) {
     console.log(endLetter, startLetter, mSex, mYear);
-    knex('names')
+    return knex('names')
         .where({sex: mSex, year: mYear})
         .where('name', 'like', `${startLetter}%${endLetter}`)
         .orderBy('number', 'desc')
         .limit(10)
-        .then(getAll => {
-            console.log(getAll)
-        })
 }
 
 function getNamesWithStartContainLetters(mSex, mYear, startLetter, containLetter) {
     console.log(containLetter, startLetter, mSex, mYear);
-    knex('names')
+    return knex('names')
         .where({sex: mSex, year: mYear})
         .where('name', 'like', `${startLetter}%${containLetter}%`)
         .orderBy('number', 'desc')
         .limit(10)
-        .then(getAll => {
-            console.log(getAll)
-        })
 }
 
 function getNamesWithContainEndLetters(mSex, mYear, endLetter, containLetter) {
     console.log(containLetter, endLetter, mSex, mYear);
-    knex('names')
+    return knex('names')
         .where({sex: mSex, year: mYear})
         .where('name', 'like', `%${containLetter}%${endLetter}`)
         .orderBy('number', 'desc')
         .limit(10)
-        .then(getAll => {
-            console.log(getAll)
-        })
 }
 
 module.exports.knex = knex;
