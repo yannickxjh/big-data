@@ -8,18 +8,24 @@ const knex = require('knex')({
     }
 });
 
+knex.select('*').from('names').then(res => {
+    console.log(res)
+})
+
 function add(data, filename) {
     year = Number(filename.substring(3, 7));
     let datas = data.split('\r\n');
     datas.forEach(element => {
         if (element) {
             value = element.split(',')
-            knex('ta table').insert([
-                {name: value[0]},
-                {sex: value[1]},
-                { number: Number(value[2])},
-                { year: year }
-            ])
+            knex('ta table').insert(
+                { name: value[0],
+                sex: value[1],
+                number: Number(value[2]),
+                year: year }
+            ).then(res => {
+                console.log(res)
+            })
         }
     });
 }

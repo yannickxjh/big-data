@@ -30,9 +30,7 @@ app.post('/', (req, res) => {
 
 app.post('/db', (req, res) => {
     var fs = require('fs');
-    console.log(req.body.file);
     var text = fs.readFileSync('names/' + req.body.file, 'utf8');
-    console.log(text);
     database.add(text, req.body.file);
     res.status(200).send('ok');
 })
