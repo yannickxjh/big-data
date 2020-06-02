@@ -32,16 +32,16 @@
             </div>
             <div class="input-field col s12">
                 <select name="gender">
-                    <option value="" selected>Both</option>
+                    <!-- <option value="" selected>Both</option> ARRETE C TROP LONG AVEC BOTH :'(' -->
                     <option value="M">Male</option>
                     <option value="F">Female</option>
                 </select>
-                <label>Gender</label>
+                <label>gender</label>
             </div>
             <div class="input-field col s12">
                 <select id="year-select" name="year">
                 </select>
-                <label>Year</label>
+                <label>year</label>
             </div>
             <input class="btn" type="submit" value="Submit">
         </form>
@@ -54,7 +54,7 @@
     });
 
     var year = document.getElementById("year-select");
-    for (let i = 1980; i < 2011; i++) {
+    for (let i = 1980; i < 2020; i++) {
         var option = document.createElement("option");
         option.text = i;
         year.add(option);
